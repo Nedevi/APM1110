@@ -1,0 +1,59 @@
+---
+title: "FA1"
+output: pdf_document
+date: "2025-02-01"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+setwd("/Users/imee/Desktop/IVAN")
+library(readr)
+results <- read.table("results.csv", header = TRUE)
+```
+
+```{r}
+results
+```
+
+1.
+```{r}
+skewness <- function(x){
+  (3*(mean(x, na.rm = TRUE) - median(x, na.rm = TRUE)))/sd(x, na.rm = TRUE)
+}
+```
+
+```{r}
+skewness(results$Arch1)
+skewness(results$Prog1)
+skewness(results$Arch2)
+skewness(results$Prog2)
+```
+2.a.
+```{r}
+M <- c(results$Arch1[results$Gender == "M"], results$Arch2[results$Gender == "M"],results$Prog1[results$Gender == "M"], results$Prog2[results$Gender == "M"])
+stem(M)
+```
+
+```{r}
+A <- c(results$Arch1[results$Gender == "F"], results$Arch2[results$Gender == "F"],results$Prog1[results$Gender == "F"], results$Prog2[results$Gender == "F"])
+stem(A)
+```
+Displaying the data this way allows the viewer to see the specific scores from each increment. It also displays the frequency of data.
+
+
+2.b.
+```{r}
+MM <- results[results[, 1] == "M", 2:5]
+boxplot(MM)
+```
+Subjects Arch1, Prog1, and Prog2 all are skewed towards the lower end which agrees with the calculated value of skewness in number 1 even if the data used above are for the M gender. Arch2 has a few outliers and is skewed to the higher end.
+
+```{r}
+FF <- results[results[, 1] == "F", 2:5]
+boxplot(FF)
+```
+
+Unlike the M plot, Prog1 for the F gender shows the data being skewed towards the high end. This contradicts the calculated skewedness for all data. Arch2 is also skewed towards the high end while Arch1 and Prog2 are skewed towards the low end which agrees with the calculated skewedness.
