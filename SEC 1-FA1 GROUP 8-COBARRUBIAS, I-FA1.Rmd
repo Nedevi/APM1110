@@ -1,8 +1,11 @@
 ---
 title: "FA1"
-output: pdf_document
+output: github_document
 date: "2025-02-01"
 ---
+
+https://github.com/Nedevi/APM1110/blob/main/SEC%201-FA1%20GROUP%208-COBARRUBIAS%2C%20I-FA1.Rmd
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
